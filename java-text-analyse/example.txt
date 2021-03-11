@@ -1,0 +1,65 @@
+'''import java.util.List;
+
+public class ArithmeticUtil {
+
+    public Integer sum(List<Integer> list) {
+        if (list == null){
+            throw new IllegalArgumentException();
+        }
+
+       int sum = 0;
+       for (Integer num : list){
+           sum += num;
+       }
+
+       return sum;
+    }
+
+}'''
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ArithmeticUtilTest {
+
+    @Test
+    public void should_retun_sum_of_list() {
+        // given:
+        List<Integer> list = Arrays.asList(1,2,3);
+        int expectedResult = 6;
+        ArithmeticUtil sut = new ArithmeticUtil();
+
+        // when:
+        int result = sut.sum(list);
+
+        // then:
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void should_retun_zero_when_empty_list() {
+        // given:
+        List<Integer> list = new ArrayList<>();
+        int expectedResult = 0;
+        ArithmeticUtil sut = new ArithmeticUtil();
+
+        // when:
+        int result = sut.sum(list);
+
+        // then:
+        assertEquals(expectedResult, result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_retun_IllegalArgumentEcxeption_when_null_passed() {
+        // given:
+        ArithmeticUtil sut = new ArithmeticUtil();
+
+        // when:
+        sut.sum(null);
+    }
+
+}
